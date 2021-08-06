@@ -1,0 +1,19 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.moneysupermarket.componentcatalog:component-catalog-component-metadata:$componentMetadataVersion"
+    }
+}
+
+import com.moneysupermarket.componentcatalog.componentmetadata.services.ComponentMetadataValidator
+
+tasks.register("validateComponentMetadata") {
+    doLast {
+        ComponentMetadataValidator.validate(file("component-metadata.yaml"))
+    }
+}
+
+tasks.named("build") { dependsOn("validateComponentMetadata") }

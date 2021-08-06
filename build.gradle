@@ -1,0 +1,5 @@
+plugins {
+    id "base"
+}
+
+apply from: "gradle/component-metadata.gradle"

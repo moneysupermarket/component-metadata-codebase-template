@@ -1,0 +1,203 @@
+# This file is read automatically by the Component Catalog
+
+
+# A component is any part of a technology stack/platform.  A component could a web frontend, mobile app, microservice, database server, database, queue
+# server, queue, content delivery network (CDN), load balancer etc.
+components:
+  # Example of the minimal YAML to add a component to the Component Catalog
+  - id: example-component
+    name: Example Component
+    type: service
+    repo:
+      url: https://example.com/example.git
+    description: |
+      A short description of the component that is 1 to 3 sentences long. It frequently used in the Component Catalog to describe
+      the component.
+    teams:
+      - teamId: example-team
+    platform: kubernetes
+
+
+  # Example of all the YAML that can be used on a component
+  - id: example-detailed-component
+    name: Example Detailed Component
+    # The component catalog supports custom component types
+    type: service
+    # Tags are used in the Component Catalog to group together components. They can be used in the Component Catalog to view dependencies, tech debt etc. for
+    # tagged groups of components.
+    #
+    # Tags have to be in camel-case.
+    tags:
+      - example-1
+      - exmaple-2
+    # `repo` specifies the code repo for the component. For software, this would be the repo containing the code. For infrastructure like database servers or
+    # queue services, this would be the repo that contains the config/code for the infrastructure
+    #
+    # Currently, the repo field is mandatory. In the future it will probably become optional
+    repo:
+      # The URL needs to be the Git clone URL for the repo and not a UI URL for the repo
+      url: https://example.com/example.git
+    # The responsibilities section is inspired by the concept of Class-responsibility-collaboration (CRC) cards
+    # (https://en.wikipedia.org/wiki/Class-responsibility-collaboration_card) except in this case the section describes the responsibilities of a whole
+    # component and not an individual code class.  The section is a way to describe the top-level features or responsibilities of a component and can be useful
+    # for both people new to the component and as a refresher for people who are already very familiar with the component.  
+    responsibilities:
+      - description: |
+          The description supports [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/), including bullet point lists, images and
+          tables.
+      - description: |
+          Description of another responsibility.
+    description: |
+      The `description` should be a short description of the component that is 1 to 3 sentences long. It frequently used in the Component Catalog to describe
+      the component.
+
+      [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported in the description, so bullet point lists, hyperlinks and
+      tables can be used.
+    notes: |
+      The `notes` field can include more detailed information for the component. The notes are not shown in as many places in the Component Catalog as the
+      description.
+
+      The notes field also supports [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+
+      An example of a bullet point list:
+
+      1. Point 1
+      2. Another point
+      3. A further point
+
+      An example of a table:
+
+      | Column 1 | Column 2 |
+      |---|---|
+      | Row 1 cell 1 | Row 1 cell 2 |
+      | Row 2 cell 1 | Row 1 cell 2 |
+    links:
+      - url: https://example.com/something
+        description: |
+          The `description` is optional but is worth including. It should describe the link in 1 to 3 sentances.
+
+          [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+
+          Links can be used for things like linking to wiki pages, build jobs etc. They can link to any info that might be useful for people to understand
+          the component, including requirements, runbooks etc.
+      - url: https://example.com/something-else
+        description: |
+          Another desctription
+    # The `teams` section is optional. It details 1 or more teams that are related to the component. Typically a team listed here owns the component but you can
+    # list teams that previously owned the component (using `type: previous`). You can also add `type: primary` to include the team that is the primary owner
+    # of the component when more than one team is specified.
+    #
+    # The `description` field can also be used to provide context on how a team relates to the component.
+    #
+    # A team with `type: previous` specified will not be associated with the component when it comes to things like tech debt.
+    teams:
+      - teamId: example-team
+        type: primary
+        description: |
+          The `description` is optional but is worth including when there is more than 1 team specified for a component or when the relationships between teams
+          and the component are ambiguous.
+
+          [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+      - teamId: example-team-2
+        type: previous
+        description: |
+          This team previously owned the component but no longer owns it. Including a previous owner can be useful in situations when a component has just been
+          reasigned from one team to another team.
+      - teamId: example-team-3
+        description: |
+          Another team that has no `type` specified.
+    # The component catalog supports custom platforms
+    platform: kubernetes
+    # The `dependencies` section is optional. It describes dependencies between this component and other components. It can be used to describe things like:
+    #
+    # 1. Dependencies between microservices
+    # 2. A dependency from a mobile app to an API gateway
+    # 3. A dependency from a microservice to a database or queue
+    # 4. A dependency between a database and the database server that hosts it
+    #
+    # Note, some dependencies can be automatically detected using distributed tracing systems like Zipkin, without having to specify those dependencies here.
+    dependencies:
+      - targetComponentId: example-component-2
+      - targetComponentId: example-component-3
+        # This is an `inbound` dependency. The direction of this dependency is in the opposite direction to a normal dependency. It specifies that component
+        # `example-4` is dependent on this component, and not the other way around.
+      - targetComponentId: example-component-4
+        direction: inbound
+    # The `crossFunctionalRequirements` section is optional. It describes the cross functional requirements (i.e. non-functional requirements) for the
+    # component. See https://sarahtaraporewalla.com/agile/design/decade_of_cross_functional_requirements_cfrs for some background to the concept of cross
+    # functional requirements.
+    crossFunctionalRequirements:
+      - description: |
+          The `description` field is mandatory. It should describe the cross functional requirement in 1 to 3 sentances.
+
+          [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+        notes: |
+          The `notes` field is optional but recommended.
+
+          [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+        # The `links` section is optional.
+        links:
+          - url: https://example.com/something
+            description: |
+              The `description` is optional but is worth including. It should describe the link in 1 to 3 sentances.
+
+              [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+
+              Links can be used for things like linking to wiki pages, stories etc. They can link to any info that might be useful for people to
+              understand the cross functional requirement.
+          - url: https://example.com/something-else
+            description: |
+              Another desctription
+      - description: |
+          Another cross functional requirement item
+    # The `techDebts` section is optional. It describes the tech debt for the component. See https://en.wikipedia.org/wiki/Technical_debt for a description of
+    # the concept of tech debt. In this context, tech debt is not limited to i) code/design decisions that introduce tech debt but ii) also when the passage of
+    # time introduces tech debt. For example, when a codebase uses an up-to-date version of a third party library initially but over time the version is not
+    # upgraded, creating mounting tech debt.
+    techDebts:
+      - description: |
+          The `description` field is mandatory. It should describe the tech debt in 1 to 3 sentances.
+
+          [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+        notes: |
+          The `notes` field is optional but recommended.
+
+          [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+        # The `priority` field is optional but recommended. It should describe the priority of fixing/resolving the tech debt. Four priority levels are
+        # supported:
+        #
+        # 1. very-high
+        # 2. high
+        # 3. medium
+        # 4. low
+        priority: high
+        # The `links` section is optional.
+        links:
+          - url: https://example.com/something
+            description: |
+              The `description` is optional but is worth including. It should describe the link in 1 to 3 sentances.
+
+              [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) is supported.
+
+              Links can be used for things like linking to wiki pages, stories etc. They can link to any info that might be useful for people to
+              understand the cross functional requirement.
+          - url: https://example.com/something-else
+            description: |
+              Another desctription
+      - description: |
+          Another tech debt item
+        priority: medium
+    # The `openApiSpecs` section is optional. It can be used to provide the URLs of OpenAPI spec JSON/YAML files for the component.
+    #
+    # As well as specifying OpenAPI spec URLs here, the Component Catalog can also automatically detect OpenAPI spec JSON/YAML files that are committed to the
+    # component's code repo.
+    openApiSpecs:
+      - url: http://example.com/example/dev/openapi.yaml
+        description: |
+          OpenAPI spec for version of the component in the `dev` environment
+      - url: http://example.com/example/test/openapi.yaml
+        description: |
+          OpenAPI spec for version of the component in the `test` environment
+      - url: http://example.com/example/production/openapi.yaml
+        description: |
+          OpenAPI spec for version of the component in the `production` environment
