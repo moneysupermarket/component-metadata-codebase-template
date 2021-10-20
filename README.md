@@ -1,3 +1,8 @@
+# Repo Has Moved
+
+This repo has moved to https://github.com/kronicle-tech/kronicle-metadata-codebase-template
+
+
 # Component Metadata Template
 
 This repo contains a template for adding a `component-metadata.yaml` file to a component's own codebase repo.
